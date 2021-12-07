@@ -614,6 +614,32 @@ var rateFinal = {
 };
 timeline.push(rateFinal);
 
+// --------- ask manipulation check question ------- //
+var manipCheck = {
+  type: 'html-button-response',
+  button_html: '<button class="jspsych-btn" style="display:none">%choice%</button>',
+  choices: ['Click here to continue'],
+  on_start: function() {setTimeout(function() {setDisplay("jspsych-btn","")}, 2000)},
+  is_html: true,
+  stimulus: ["<p style=text-align:center>Thanks, you're nearly done.<br><br>" +
+            "Just 1 more question to check your memory<br>" +
+            "for what you saw during the experiment.<br>"]
+};
+timeline.push(manipCheck);
+
+var manipCheckQ = {
+  type: "survey-multi-choice",
+  preamble: [""],
+  questions: [{prompt:"You saw " + informants + " friends make guesses about which jar was selected.<br>" +
+                      "Which of these statements about those guesses is most accurate?",
+              options: ["The " + informants + " friends did not hear the other friends’ guesses and did not see the balls given to the other friends",
+                        "The " + informants + " friends could hear the other friends’ guesses but did not see the balls given to the other friends",
+                        "The " + informants + " friends could hear the other friends’ guesses and could also see the balls given to the other friends",
+                        "The " + informants + " friends saw a single ball and then agreed on the best guess"],
+              required:true}],
+};
+timeline.push(manipCheckQ);
+	  
 // --------- finish with attention check question --- //
 var attnCheck = {
   type: 'survey-text',
