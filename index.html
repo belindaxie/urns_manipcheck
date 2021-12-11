@@ -19,7 +19,7 @@
   <script>
 
 /////////////////////////////// EXPERIMENT 1 ///////////////////////////////////////
-// 2 (dependency: i, sq) vs. 2 (number informants: 3, 5, 7) between-subjects design
+// 2 (dependency: i, sq) vs. 2 (number informants: 5, 7) between-subjects design
 // prompt likelihood rating after each piece of testimony, and after own ball private evidence
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -41,14 +41,11 @@ jsPsych.pluginAPI.preloadImages(images);
 
 // ------ Randomise variables ----- //
 // informant distribution
-var distribution = ['3-1', '5-1', '7-1'];
+var distribution = ['5-1', '7-1'];
 var distribution = jsPsych.randomization.sampleWithoutReplacement(distribution, 1)[0]; // randomly select 1 condition
 // console.log(distribution);
 
 switch (distribution) {     // based on informant distribution -> how many informants?
-  case '3-1':
-    var informants = '3';
-    break;
   case '5-1':
     var informants = '5';
     break;
@@ -639,7 +636,7 @@ var manipCheckQ = {
               required:true}],
 };
 timeline.push(manipCheckQ);
-	  
+
 // --------- finish with attention check question --- //
 var attnCheck = {
   type: 'survey-text',
